@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create zip
-        run: "cd part-5-multi-core-eb && npm install && npm run build && zip deploy.zip *"
+        run: "cd part-5-multi-core-eb && npm install && npm run build && zip -r deploy.zip *"
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
