@@ -4,14 +4,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"runtime"
   "time"
 )
 
 var requestNumber int = 0
 
 func main() {
-  runtime.GOMAXPROCS(16)
 	http.HandleFunc("/", handler)
 	port := "3000"
 	fmt.Printf("Server listening on port %s\n", port)

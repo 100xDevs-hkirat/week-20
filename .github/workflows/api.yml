@@ -2,15 +2,14 @@ name: Deploy backend-api
 on:
   push:
     branches:
-      - master 
-
+      - master
       
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        run: "npm install && npm run build"
+        run: "cd part-5-multi-core-eb && npm install && npm run build"
 
       - name: Create zip
         run: "zip deploy.zip *"
