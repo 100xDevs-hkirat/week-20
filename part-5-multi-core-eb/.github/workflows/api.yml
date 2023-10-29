@@ -1,0 +1,28 @@
+name: Deploy backend-api
+on:
+  push:
+    branches:
+      - production
+
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        run: "npm install && npm run build"
+
+      - name: Create zip
+        run: "zip deploy.zip *"
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_EB_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_EB_SECRET_ACCESS_KEY }}
+          application_name: backend-api
+          environment_name: backend-api-env
+          version_label: ${{ github.sha }}
+          region: us-west-1
+          deployment_package: deploy.zip
+
