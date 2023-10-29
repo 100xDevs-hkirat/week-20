@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 function expensiveOperation() {
   const startTime = new Date().getTime();
   let ctr = 0;
-  for (let i = 0; i < 5000000000; i++) {
+  for (let i = 0; i < 500000; i++) {
     ctr++;
   }
   console.log(`Request ${requestNumber} Took total ${new Date().getTime() - startTime} ms`)
