@@ -9,10 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        run: "cd part-5-multi-core-eb && npm install && npm run build"
 
       - name: Create zip
-        run: "zip deploy.zip *"
+        run: cd part-5-multi-core-eb && npm install && npm run build" zip deploy.zip *"
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
@@ -23,5 +22,5 @@ jobs:
           environment_name: backend-api-env
           version_label: ${{ github.sha }}
           region: us-west-1
-          deployment_package: deploy.zip
+          deployment_package: ./part-5-multi-core-eb/deploy.zip
 
