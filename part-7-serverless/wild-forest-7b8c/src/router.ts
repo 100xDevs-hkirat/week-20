@@ -11,9 +11,9 @@ router.get('/api/todos/:id', ({ params }) => new Response(`Todo #${params.id}`))
 
 // POST to the collection (we'll use async here)
 router.post('/api/todos', async (request) => {
-	const content = await request.json();
+  const content = await request.json();
 
-	return new Response('Creating Todo: ' + JSON.stringify(content));
+  return new Response('Creating Todo: ' + JSON.stringify(content));
 });
 
 // 404 for everything else
